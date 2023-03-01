@@ -1,9 +1,6 @@
-
-
-// Import the controller
-// - Controller Directory
-// - FeedbackController.js
-const FeedbackController = require('../controllers/FeedbackController');
+const express = require('express');
+const router = express.Router();
+const {addFeedback} = require('../controller/FeedbackController');
 
 
 
@@ -12,3 +9,6 @@ const FeedbackController = require('../controllers/FeedbackController');
 // @access  Private
 
 router.post('/', FeedbackController.addFeedback);
+
+
+module.exports = router;

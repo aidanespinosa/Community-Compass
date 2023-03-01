@@ -10,6 +10,7 @@ addFeedback = async (req, res) => {
             data: feedback
         });
     } catch (err) {
+        
         res.status(400).json({
             success: false,
             error: err.message
