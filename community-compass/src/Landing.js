@@ -3,12 +3,14 @@ import React, { useState } from "react";
 function LandingPage() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState("");
+  const [searched, setSearched] = useState(false);
 
   const handleSearch = () => {
     fetch(`https://source.unsplash.com/1600x900/?${search}`)
       //.then((response) => response.json())
       .then((data) => {
         setSearchResult(data.url);
+        setSearched(true);
       })
       .catch((error) => {
         console.error(error);
@@ -36,11 +38,13 @@ function LandingPage() {
       </div>
       <div className="search-result" style={{ justifyContent: 'center', alignItems: 'center' }}>
       </div>
-      <div className="result-window" style={{ borderRadius: "50px", bottom: 0, left: 0, width: 1400, height: 750, marginLeft: 25, backgroundImage: `url(${searchResult})`, backgroundSize: 'cover' }}>
-        <div style={{ borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
-          <p style={{ color: "#fff", fontSize: 35 }}>{search}</p>
+      {searched && (
+        <div className="result-window" style={{ borderRadius: "50px", bottom: 0, left: 0, width: 1400, height: 750, marginLeft: 25, backgroundImage: `url(${searchResult})`, backgroundSize: 'cover' }}>
+          <div style={{ borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+            <p style={{ color: "#fff", fontSize: 35 }}>{search}</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
