@@ -16,14 +16,7 @@ function ContactForm() {
     <form onSubmit={handleSubmit}>
       <label htmlFor="feedback" style={{ fontSize: "larger", fontWeight: "600" }}>Leave us some Feedback:</label>
       <br />
-      <textarea
-        id="feedback"
-        name="feedback"
-        rows="5"
-        cols="30"
-        value={feedback}
-        onChange={handleChange}
-      />
+      <textarea id="feedback" name="feedback" rows="5" cols="30" value={feedback} onChange={handleChange} />
       <br />
       <button className="cool-button" type="submit">Submit</button>
     </form>

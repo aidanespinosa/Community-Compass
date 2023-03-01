@@ -135,3 +135,19 @@ img {
   background-color: darkgray;
   cursor: pointer;
 }
+
+.result-window {
+  width: 600px;
+  height: 400px;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start ;
+  font-weight: bold;
+}
+
+.result-window img {
+  max-width: 100%;
+  max-height: 100%;
+}
