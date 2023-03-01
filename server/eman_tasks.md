@@ -14,10 +14,8 @@ Make
 
  - Controller Directory
     - FeedbackController.js
-        - getFeedback
         - addFeedback
-        - updateFeedback
-        - deleteFeedback
+1
  - Routes Directory
     - FeedbackRoutes.js
         - getFeedback
