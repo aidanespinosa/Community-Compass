@@ -4,8 +4,8 @@ import React from "react";
 function Navbar(props) {
     return (
         <nav className="links">
-            <h1 style={{ color: "blue", fontSize: 30, marginBottom: 10, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
-                <ul>
+            <h1 style={{ fontSize: 30, marginBottom: 10, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
+                <ul className="directory">
                     <li className="links">
                         <a href="#" onClick={props.toggleLanding} style={{ borderBottom: "1px solid #f2f2f2" }}>Home</a>
                     </li>
