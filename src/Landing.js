@@ -46,16 +46,50 @@ function LandingPage() {
           <button className="cool-button" onClick={handleSearch}>Search</button>
         </div>
         <div className="search-result" style={{ justifyContent: 'center', alignItems: 'center' }}>
+          {searched && (
+            <img
+              src={searchResult}
+              alt="Search result"
+              style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover", borderRadius: "50px", bottom: 0, left: 0, width: 1400, height: 750, marginLeft: 25 }}
+            />
+          )}
+          {!searched && (
+            <img
+              src="https://source.unsplash.com/1600x900/?house"
+              alt="Search result"
+              style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "cover", borderRadius: "50px", bottom: 0, left: 0, width: 1400, height: 750, marginLeft: 25 }}
+            />
+          )}
         </div>
         {searched && (
           <div className="result-window" style={{ borderRadius: "50px", bottom: 0, left: 0, width: 1400, height: 750, marginLeft: 25, backgroundImage: `url(${searchResult})`, backgroundSize: 'cover' }}>
-            <div style={{ borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+            <div className="title" style={{ borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
               <p style={{ color: "#fff", fontSize: 35 }}>{search}</p>
             </div>
           </div>
         )}
         {error && <div className="error">{error}</div>}
       </main>
+      {searched && (
+        <div className="crimeGrade" style={{ marginTop: "300px", borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+          <p style={{ color: "#fff", fontSize: 35 }}>{/*crime grade API call results*/}</p>
+        </div>
+      )}
+      {searched && (
+        <div className="schoolGrade" style={{ marginTop: "600px", borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+          <p style={{ color: "#fff", fontSize: 35 }}>{/*school grade API call*/}</p>
+        </div>
+      )}
+      {searched && (
+        <div className="amenities" style={{ marginTop: "300px", borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+          <p style={{ color: "#fff", fontSize: 35 }}>{/*amenities API call*/}</p>
+        </div>
+      )}
+      {searched && (
+        <div className="recreation" style={{ marginTop: "600px", borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+          <p style={{ color: "#fff", fontSize: 35 }}>{/*rec areas API call*/}</p>
+        </div>
+      )}
     </div>
   );
 }
