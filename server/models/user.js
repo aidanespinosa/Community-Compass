@@ -8,6 +8,6 @@ const userSchema = new Schema({
   payment: { type: Number },
 });
 
-const Users = model("users", userSchema);
+const User = model("user", userSchema);
 
-module.exports = Users;
+module.exports = User;
