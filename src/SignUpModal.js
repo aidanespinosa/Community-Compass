@@ -29,7 +29,7 @@ function SignUpModal(props) {
 
     return (
         <div className="signUp-modal">
-            <div className="modal-content">
+            <div style={{ backgroundColor: "rgb(12, 123, 198)" }} className="modal-content">
                 <form onSubmit={handleSubmit}>
                     <h2>Sign Up</h2>
                     <label>

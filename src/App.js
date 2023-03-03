@@ -53,6 +53,9 @@ function App() {
     <>
       <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute" }}>
       </div>
+      <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
+          Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
+        </h1>
       <div>
         <Navbar toggleLanding={toggleLanding} toggleContactUs={toggleContactUs} toggleMembership={toggleMembership} />
       </div>
@@ -60,9 +63,9 @@ function App() {
         <Landing />
       </div>
       <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
-        <button className="cool-button" onClick={handleLoginClick}>Login</button>
+        <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={handleLoginClick}>Login</button>
         {showLoginModal && <LoginModal onClose={closeLoginModal} />}
-        <button className="cool-button" onClick={handleSignUpClick}>Signup</button>
+        <button style={{ backgroundColor: "rgb(12, 123, 198)", fontWeight: 500 }} className="cool-button" onClick={handleSignUpClick}>Signup</button>
         {showSignUpModal && <SignUpModal onClose={closeSignUpModal} />}
       </div>
       <div className={`contactUs ${contactUsVisible ? "" : "hidden"}`}>

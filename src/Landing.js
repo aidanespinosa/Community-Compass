@@ -36,9 +36,6 @@ function LandingPage() {
   return (
     <div className="container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <header>
-        <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
-          Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
-        </h1>
         <p style={{ position: "fixed", left: 0, maxWidth: 250, marginLeft: 25, marginTop: 100 }}>
           <li >SafeZone can tell you everything you might want to know about your perspective new home and it's neighborhood.</li><li>SafeZone provides information and reviews about neighborhood crime rates, tells you data on schools in the area, including the public reviews of those schools, and other things like local attractions or places of interest like nearby parks, museums, recreational areas, etc.</li><li>SafeZone is used by millions of people daily, as someone somewhere is always looking to buy or rent a new home.</li><li>Simply type in an address and then we give you the information in a clean and simple to understand layout. With SafeZone any new home buyer or renter will have a more informed idea of the area in which they're planning to live.</li></p>
       </header>

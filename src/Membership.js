@@ -14,7 +14,7 @@ function AccountCreationPage() {
     }
 
     return (
-        <div className="membership" style={{ marginRight: 25 }}>
+        <div className="membership" style={{ marginLeft: 360, marginRight: 25 }}>
             <h1 style={{ color: "gray", fontSize: 45, marginBottom: 15, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
                 Membership Options:
             </h1>
