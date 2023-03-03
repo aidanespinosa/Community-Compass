@@ -5,7 +5,13 @@ const resolvers = {
         users: async () => {
             return User.find();
         },
+        apiSearch: async () => {
+            // fetch rewuest
+
+            // return data
+        }
     },
+    
 };
 
 module.exports = resolvers;
