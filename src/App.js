@@ -50,8 +50,8 @@ function App() {
   }
 
   return (
-    <div className="directory">
-      <div className="header">
+    <div className="header">
+      <div>
         <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
           <button className="cool-button" style={{ right: "75px" }} onClick={handleLoginClick}>Login</button>
           {showLoginModal && <LoginModal onClose={closeLoginModal} />}
