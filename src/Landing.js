@@ -39,7 +39,8 @@ function LandingPage() {
         <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
           Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
         </h1>
-        <p style={{ position: "fixed", left: 0, maxWidth: 250, marginLeft: 25, marginTop: 100 }} >"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <p style={{ position: "fixed", left: 0, maxWidth: 250, marginLeft: 25, marginTop: 100 }}>
+          <li >SafeZone can tell you everything you might want to know about your perspective new home and it's neighborhood.</li><li>SafeZone provides information and reviews about neighborhood crime rates, tells you data on schools in the area, including the public reviews of those schools, and other things like local attractions or places of interest like nearby parks, museums, recreational areas, etc.</li><li>SafeZone is used by millions of people daily, as someone somewhere is always looking to buy or rent a new home.</li><li>Simply type in an address and then we give you the information in a clean and simple to understand layout. With SafeZone any new home buyer or renter will have a more informed idea of the area in which they're planning to live.</li></p>
       </header>
       <main className="main">
         <div className="search">
@@ -67,7 +68,7 @@ function LandingPage() {
         </div>
       )}
       {searched && (
-        <div className="schoolGrade" style={{ marginTop: 450 , borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
+        <div className="schoolGrade" style={{ marginTop: 450, borderRadius: "25px", width: "400px", height: "100px", backgroundColor: "rgba(0, 0, 0, 0.5)", display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold" }} >
           <p style={{ color: "#fff", fontSize: 35 }}>{"School Zone ****"/*school grade API call*/}</p>
         </div>
       )}
