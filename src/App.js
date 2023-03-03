@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div className="header">
+    <div className="header" style={{ height: "140px", width: "100%", position: "fixed" }}>
       <div>
         <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
           <button className="cool-button" style={{ right: "75px" }} onClick={handleLoginClick}>Login</button>
