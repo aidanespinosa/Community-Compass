@@ -14,10 +14,10 @@
   margin: 0;
   font-family: "Quicksand";
   color: #333;
+  z-index: 0;
 }
 
 body {
-  display: block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -28,13 +28,17 @@ body {
   background-repeat: no-repeat;
 }
 
+.root {
+ display: flex;
+ height: 100vh;
+}
+
 .links {
   padding: 10px;
   text-align: center;
   justify-content: center;
   display: inline;
   align-items: center;
-  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -146,11 +150,6 @@ img {
   font-weight: bold;
 }
 
-.result-window img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
 .search {
   display: flex;
   justify-content: center;
@@ -160,28 +159,28 @@ img {
 
 .crimeGrade {
   position: absolute;
-  top: 33%;
-  left: 0;
+  top: 0;
+  right: 0;
   transform: translateY(-50%);
 }
 
 .schoolGrade {
   position: absolute;
-  top: 66%;
-  left: 0;
+  top: 0;
+  right: 0;
   transform: translateY(-50%);
 }
 
 .amenities {
   position: absolute;
-  top: 33%;
+  top: 0;
   right: 0;
   transform: translateY(-50%);
 }
 
 .recreation {
   position: absolute;
-  top: 66%;
+  top: 0;
   right: 0;
   transform: translateY(-50%);
 }

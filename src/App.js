@@ -50,18 +50,20 @@ function App() {
   }
 
   return (
-    <div className="header" style={{ height: "140px", width: "100%", position: "fixed" }}>
-      <div>
-        <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
-          <button className="cool-button" style={{ right: "75px" }} onClick={handleLoginClick}>Login</button>
-          {showLoginModal && <LoginModal onClose={closeLoginModal} />}
-          <button className="cool-button" onClick={handleSignUpClick}>Signup</button>
-          {showSignUpModal && <SignUpModal onClose={closeSignUpModal} />}
-        </div>
+    <>
+      <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute" }}>
       </div>
-      <Navbar toggleLanding={toggleLanding} toggleContactUs={toggleContactUs} toggleMembership={toggleMembership} />
+      <div>
+        <Navbar toggleLanding={toggleLanding} toggleContactUs={toggleContactUs} toggleMembership={toggleMembership} />
+      </div>
       <div className={`Landing ${landingVisible ? "" : "hidden"}`}>
         <Landing />
+      </div>
+      <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
+        <button className="cool-button" onClick={handleLoginClick}>Login</button>
+        {showLoginModal && <LoginModal onClose={closeLoginModal} />}
+        <button className="cool-button" onClick={handleSignUpClick}>Signup</button>
+        {showSignUpModal && <SignUpModal onClose={closeSignUpModal} />}
       </div>
       <div className={`contactUs ${contactUsVisible ? "" : "hidden"}`}>
         <ContactUs />
@@ -69,7 +71,7 @@ function App() {
       <div className={`membership ${membershipVisible ? "" : "hidden"}`}>
         <Membership />
       </div>
-    </div>
+    </>
   );
 }
 
