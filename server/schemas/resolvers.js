@@ -5,11 +5,11 @@ const resolvers = {
         users: async () => {
             return User.find();
         },
-        apiSearch: async () => {
-            // fetch rewuest
+        // apiSearch: async () => {
+        //     // fetch rewuest
 
-            // return data
-        }
+        //     // return data
+        // }
     },
     
 };

@@ -1,6 +1,9 @@
 const express = require("express");
 const { ApolloServer } = require('apollo-server-express');
 
+const MoviesAPI = require('./datasources/movieAPI')
+
+
 const { typeDefs, resolvers } = require('./schemas');
 
 const db = require("./config/connection");
@@ -10,6 +13,11 @@ const app = new express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources: () => {
+    return {
+      moviesAPI: new MoviesAPI(),
+    };
+  },
 });
 
 const PORT = process.env.PORT || 3001;
@@ -30,4 +38,4 @@ const startApolloServer = async (typeDefs, resolvers) => {
   })
   };
 
-  startApolloServer(typeDefs, resolvers);
+  startApolloServer(typeDefs, resolvers,);
