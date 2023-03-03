@@ -35,6 +35,7 @@ function App() {
 
   function handleLoginClick() {
     setShowLoginModal(true);
+    setShowSignUpModal(false);
   }
 
   function closeLoginModal() {
@@ -43,6 +44,7 @@ function App() {
 
   function handleSignUpClick() {
     setShowSignUpModal(true);
+    setShowLoginModal(false);
   }
 
   function closeSignUpModal() {
