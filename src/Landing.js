@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchBar from "./searchBar";
 
 function LandingPage() {
   const [search, setSearch] = useState("");
@@ -41,6 +42,7 @@ function LandingPage() {
       </header>
       <main className="main">
         <div className="search">
+          <SearchBar onSearch={handleSearch} />
           <input type="text" value={search} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Search for an address" />
           <button className="cool-button" onClick={handleSearch}>Search</button>
         </div>

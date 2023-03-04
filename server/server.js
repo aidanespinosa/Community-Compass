@@ -5,7 +5,7 @@ const MoviesAPI = require('./datasources/movieAPI')
 
 
 const { typeDefs, resolvers } = require('./schemas');
-
+require('dotenv').config();
 const db = require("./config/connection");
 
 const app = new express();
