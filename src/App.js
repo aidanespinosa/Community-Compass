@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './App.css';
 import Navbar from './Navbar';
 import Landing from './Landing.js';
 import Membership from './Membership';
 import ContactUs from './ContactUs';
-import LoginModal from "./LoginModal";
-import SignUpModal from "./SignUpModal";
+import LoginModal from './LoginModal';
+import SignUpModal from './SignUpModal';
+import ParticlesBg from './Particles';
 
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
@@ -53,12 +54,13 @@ function App() {
 
   return (
     <>
-      <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute" }}>
+      <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute", opacity: 0.8 }}>
       </div>
       <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
-          Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
-        </h1>
+        Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
+      </h1>
       <div>
+      <ParticlesBg color="#ff0000" num={200} type="random" bg={true} />
         <Navbar toggleLanding={toggleLanding} toggleContactUs={toggleContactUs} toggleMembership={toggleMembership} />
       </div>
       <div className={`Landing ${landingVisible ? "" : "hidden"}`}>

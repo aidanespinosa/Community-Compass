@@ -42,12 +42,8 @@ body {
   margin: 0 auto;
 }
 
-.links h1 {
-  color: #9d9f9d;
-}
-
 .links {
-  margin-left: auto;
+text-align: center;
 }
 
 .links a {

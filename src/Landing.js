@@ -8,20 +8,20 @@ function LandingPage() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(
-        //we need to update this url with the actual url we'll use to search the home address
-        `https://source.unsplash.com/1600x900/?${search}`
-      );
+      const response = await fetch(`$/search?q=${search}`);
       if (!response.ok) {
         throw new Error("Oops! Something that wasn't supposed to happen happened!");
       }
+      //const results = await response.json();
       setSearchResult(response.url);
+      console.log(response);
       setSearched(true);
       setSearch("");
     } catch (error) {
       setError(error.message);
-    }
+    } return [search];
   };
+
 
   const handleInputChange = (event) => {
     setSearch(event.target.value);
