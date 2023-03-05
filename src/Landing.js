@@ -23,15 +23,6 @@ function LandingPage() {
     }
   };
 
-  const handleInputChange = (event) => {
-    setSearch(event.target.value);
-  };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
-  };
 
   return (
     <div className="container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginRight: 25 }}>
@@ -43,8 +34,6 @@ function LandingPage() {
       <main className="main">
         <div className="search">
           <SearchBar onSearch={handleSearch} />
-          <input type="text" value={search} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Search for an address" />
-          <button className="cool-button" onClick={handleSearch}>Search</button>
         </div>
         <div className="search-result" style={{ justifyContent: 'center', alignItems: 'center' }}>
         </div>

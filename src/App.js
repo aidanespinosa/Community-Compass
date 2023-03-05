@@ -6,6 +6,15 @@ import Membership from './Membership';
 import ContactUs from './ContactUs';
 import LoginModal from "./LoginModal";
 import SignUpModal from "./SignUpModal";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
+
+
 
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
@@ -50,6 +59,7 @@ function App() {
   }
 
   return (
+  <ApolloProvider client={client}>
     <div className="header">
       <div>
         <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
@@ -70,6 +80,7 @@ function App() {
         <Membership />
       </div>
     </div>
+  </ApolloProvider>
   );
 }
 

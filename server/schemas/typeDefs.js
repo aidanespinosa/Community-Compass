@@ -13,6 +13,15 @@ const typeDefs = gql`
     type Query {
         users: [User]!
       }
+
+    type LatLong {
+        lat: Float
+        lng: Float
+      }
+      
+    type Mutation {
+        getLatLong(address: String!): LatLong
+      }
 `;
 
 module.exports = typeDefs;
