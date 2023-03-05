@@ -13,6 +13,7 @@ function ContactForm() {
   }
 
   return (
+    <div className="">
     <form onSubmit={handleSubmit}>
       <label htmlFor="feedback" style={{ fontSize: "larger", fontWeight: "600" }}>Leave us some Feedback:</label>
       <br />
@@ -20,6 +21,7 @@ function ContactForm() {
       <br />
       <button className="cool-button" type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 
