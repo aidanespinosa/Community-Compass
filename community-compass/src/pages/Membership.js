@@ -37,6 +37,12 @@ function AccountCreationPage() {
                     <ul>- (optional) Access to the Megan's Law website for the provided address.</ul>
                 </div>
                 <button className="cool-button" type="submit">Create Account</button>
+
+                <form action="/create-checkout-session" method="POST">
+                    <input type="hidden" name="priceId" value="price_1MiVhgGGno84ND8Lt0DEwfqQ" />
+                    <button type="submit">Upgrage To Premium</button>
+                </form>
+
             </form>
         </div>
     );

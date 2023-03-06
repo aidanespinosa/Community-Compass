@@ -80,7 +80,7 @@ const Signup = () => {
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Submit
+                  Create Account
                 </button>
               </form>
             )}
