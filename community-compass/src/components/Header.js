@@ -21,6 +21,9 @@ const Header = () => {
         <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
           {Auth.loggedIn() ? (
             <>
+              <Link className="cool-button" to="/contact">
+                Contact Us
+              </Link>
               <Link className="cool-button" to="/membership">
                 Upgrage Membership
               </Link>
