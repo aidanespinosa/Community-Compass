@@ -21,11 +21,11 @@ const Header = () => {
         <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg m-2 cool-button" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <Link className="btn btn-lg m-2 cool-button" to="/membership">
+              <Link className="cool-button" to="/membership">
                 Upgrage Membership
+              </Link>
+              <Link className="cool-button" to="/me">
+                {Auth.getProfile().data.username}'s profile
               </Link>
               <button className="cool-button" onClick={logout}>
                 Logout

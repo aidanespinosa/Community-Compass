@@ -45,20 +45,58 @@ const startApolloServer = async (typeDefs, resolvers) => {
   })
   };
 
-  const session = await stripe.checkout.sessions.create({
-    mode: 'subscription',
-    line_items: [
-      {
-        price: priceId,
-        // For metered billing, do not pass quantity
-        quantity: 1,
-      },
-    ],
-    // {CHECKOUT_SESSION_ID} is a string literal; do not change it!
-    // the actual Session ID is returned in the query parameter when your customer
-    // is redirected to the success page.
-    success_url: 'https://example.com/success.html?session_id={CHECKOUT_SESSION_ID}',
-    cancel_url: 'https://example.com/canceled.html',
-  });
+//Stripe
+
+app.get("/checkout-session", async (req, res) => {
+  const { sessionId } = req.query;
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+  res.send(session);
+});
+
+app.post("/create-checkout-session", async (req, res) => {
+//  const domainURL = process.env.DOMAIN;
+  const { priceId } = '{{PRICE_ID}}';
+
+  // Create new Checkout Session for the order
+  // Other optional params include:
+  // [billing_address_collection] - to display billing address details on the page
+  // [customer] - if you have an existing Stripe Customer ID
+  // [customer_email] - lets you prefill the email input in the form
+  // [automatic_tax] - to automatically calculate sales tax, VAT and GST in the checkout page
+  // For full details see https://stripe.com/docs/api/checkout/sessions/create
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      mode: "subscription",
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+
+        },
+      ],
+      // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
+      success_url: `http://localhost:3000`,
+      cancel_url: `http://localhost:3000/membership`,
+      // automatic_tax: { enabled: true }
+    });
+
+    return res.redirect(303, session.url);
+  } catch (e) {
+    res.status(400);
+    return res.send({
+      error: {
+        message: e.message,
+      }
+
+    });
+
+  }
+  
+});
+
+
 
   startApolloServer(typeDefs, resolvers);
+
+  
