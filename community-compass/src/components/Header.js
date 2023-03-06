@@ -9,16 +9,16 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="header mb-4 py-3 flex-row align-center" >
-      <div className="">
+    <header className="mb-4 py-3 flex-row align-center" >
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-light" to="/">
-          <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
+          <Link className="" to="/">
+          <h1 style={{ color: "black", fontSize: 50, left: 10, position: "absolute" }}>
           Safe<span style={{ color: "#fff", textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>Zone</span>
         </h1>
           </Link>
         </div>
-        <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
+        <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
           {Auth.loggedIn() ? (
             <>
               <Link className="btn btn-lg btn-info m-2" to="/me">
