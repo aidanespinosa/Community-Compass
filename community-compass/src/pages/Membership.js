@@ -15,9 +15,7 @@ function AccountCreationPage() {
     }
 
     const handleSubmitSub = async (event) => {
-        if (!stripe) {
 
-        }
 
     }
 
