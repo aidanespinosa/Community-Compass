@@ -7,6 +7,4 @@ mongoose.connect(connectionString, {
   useUnifiedTopology: true,
 });
 
-module.exports = {
-  mongooseDb: mongoose.connection,
-};
+module.exports = mongoose.connection;
