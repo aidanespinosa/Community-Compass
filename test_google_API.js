@@ -1,18 +1,32 @@
-// How do I set up a crime API within JavaScript?
-// Ans: You can use the following code to set up a crime API within JavaScript:
+
+
+require('dotenv').config();
+const axios = require('axios');
 
 
 
-// Language: javascript
+let url = `https://maps.googleapis.com/maps/api/js?key=${process.env.googleAPIKEY}`;
 
 
-const API_KEY = 'AIzaSyA95K610UIdTZ8ghG6BXm4mupocM1c-7hAE';
-const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=restaurant&key=${API_KEY}`;
+axios.get(url)
+  .then((response) => {
+    // Get the data from the API
+    // console.log(response);
+    var geocoder = new google.maps.Geocoder();
+    var address = await prompt("Enter a street address");
+    geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        alert("Latitude: " + latitude + "Longitude: " + longitude);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
 
-myAPI.get(url).then(data => {
-  console.log(data);
-});
+  });
 
-// Path: test_google_API.js
+
+
 
 
