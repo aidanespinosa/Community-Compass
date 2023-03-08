@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Navbar from './pages/Navbar';
 import Landing from './pages/Landing.js';
 import Membership from './pages/Membership';
@@ -8,11 +8,39 @@ import ContactUs from './pages/ContactUs';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import ParticlesBg from './pages/Particles';
+import Auth from '../src/utils/auth';
+import { setContext } from '@apollo/client/link/context';
+
+const logout = (event) => {
+  event.preventDefault();
+  Auth.logout();
+};
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  uri: '/graphql',
 });
+
 
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
@@ -78,8 +106,24 @@ function App() {
           <Landing />
         </div>
         <div className="buttons" style={{ position: "fixed", top: 0, right: 0 }}>
+          <button style={{ backgroundColor: "rgb(12, 123, 198)", fontWeight: 500 }} className="cool-button" onClick={handleSignUpClick}>Signup</button>
           <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={handleLoginClick}>Login</button>
-          <button style={{ backgroundColor: "rgb(12, 123, 198)", fontWeight: 500 }} className="cool-button" onClick={handleSignUpClick}>Sign Up</button>
+          <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={logout}>
+            Logout
+          </button>
+          {showLogin && <Login /*onClose={closeLogin}*/ />}
+          {showSignup && <Signup /*onClose={closeSignup}*/ />}
+        </div>
+        <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
+          {Auth.loggedIn() ? (
+            <>
+              <p>{Auth.getProfile().data.username} is currently logged In</p>
+            </>
+          ) : (
+            <>
+              <p>You are not logged In</p>
+            </>
+          )}
         </div>
         <div className={`Login ${showLogin ? "" : "hidden"}`}>
           <Login />
