@@ -48,6 +48,22 @@ function LandingPage() {
             </div>
           </div>
         )}
+        {Auth.loggedIn() ? (
+          <>
+              <button className="cool-button" onClick={logout}>
+                Logout
+              </button>
+              <Link className="cool-button" to="/membership">
+                Upgrage Membership
+              </Link>
+          </>
+        ) : (
+          <>
+                <button className="cool-button" onClick={logout}>
+                Notworking
+              </button>
+          </>
+        )}
         {error && <div className="error">{error}</div>}
 
       </main>

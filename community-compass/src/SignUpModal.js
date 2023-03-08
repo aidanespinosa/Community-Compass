@@ -26,6 +26,7 @@ const SignUpModal = (props) => {
       const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
+        console.log('You signed up!')
     
         try {
           const { data } = await addUser({

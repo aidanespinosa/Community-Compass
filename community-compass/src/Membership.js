@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Auth from './utils/auth'
 
 function AccountCreationPage() {
     const [selectedPlan, setSelectedPlan] = useState("basic");
@@ -47,6 +47,17 @@ function AccountCreationPage() {
             Upgrade To Premium
             </button>
           </form>
+          <form action="/create-portal-session" method="POST">
+        <input
+          type="hidden"
+          id="session-id"
+          name="session_id"
+          value=''
+        />
+        <button id="checkout-and-portal-button" type="submit">
+          Manage your billing information
+        </button>
+      </form>
         </section>
         </div>
     );

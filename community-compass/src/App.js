@@ -9,7 +9,13 @@ import SignUpModal from "./SignUpModal";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import ParticlesBg from './Particles';
+import Auth from '../src/utils/auth'
 
+
+const logout = (event) => {
+  event.preventDefault();
+  Auth.logout();
+};
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -95,10 +101,24 @@ function App() {
         <Landing />
       </div>
       <div className="buttons" style={{ position: "fixed", top: 0, right: 0 }}>
-        <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={handleLoginClick}>Login</button>
         <button style={{ backgroundColor: "rgb(12, 123, 198)", fontWeight: 500 }} className="cool-button" onClick={handleSignUpClick}>Signup</button>
+        <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={handleLoginClick}>Login</button>
+        <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={logout}>
+        Logout
+        </button>
         {showLoginModal && <LoginModal onClose={closeLoginModal} />}
         {showSignUpModal && <SignUpModal onClose={closeSignUpModal} />}
+      </div>
+      <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
+        {Auth.loggedIn() ? (
+          <>
+          <p>{Auth.getProfile().data.username} is currently logged In</p>
+          </>
+        ):(
+          <>
+          <p>You are not logged In</p>
+          </>
+        )}
       </div>
       <div className={`contactUs ${contactUsVisible ? "" : "hidden"}`}>
         <ContactUs />
