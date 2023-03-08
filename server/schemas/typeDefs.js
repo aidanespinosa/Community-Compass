@@ -17,6 +17,7 @@ const typeDefs = gql`
     type LatLong {
         lat: Float
         lng: Float
+        businesses: [String]
       }
       
     type Mutation {
