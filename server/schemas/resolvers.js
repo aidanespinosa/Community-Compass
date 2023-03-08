@@ -1,11 +1,17 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+<<<<<<< HEAD
 const axios = require('axios');
+=======
+const { signToken } = require('../utils/auth');
+>>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474
 
 const resolvers = {
     Query: {
         users: async () => {
             return User.find();
         },
+<<<<<<< HEAD
     },
     Mutation: {
         getLatLong: async (parent, args,) => {
@@ -46,6 +52,39 @@ const resolvers = {
         }
     }
 
+=======
+    //    apiSearch: async () => {
+            // fetch rewuest
+
+            // return data
+    //    }
+    },
+    
+    Mutation: {
+        addUser: async (parent, { username, email, password }) => {
+          const user = await User.create({ username, email, password });
+          const token = signToken(user);
+          return { token, user };
+        },
+        login: async (parent, { email, password }) => {
+          const user = await User.findOne({ email });
+    
+          if (!user) {
+            throw new AuthenticationError('No user found with this email address');
+          }
+    
+          const correctPw = await user.isCorrectPassword(password);
+    
+          if (!correctPw) {
+            throw new AuthenticationError('Incorrect credentials');
+          }
+    
+          const token = signToken(user);
+    
+          return { token, user };
+        },
+    },
+>>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474
 };
 
 module.exports = resolvers;

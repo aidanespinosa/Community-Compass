@@ -14,6 +14,7 @@ const typeDefs = gql`
         users: [User]!
       }
 
+<<<<<<< HEAD
     type LatLong {
         lat: Float
         lng: Float
@@ -30,6 +31,17 @@ const typeDefs = gql`
     type Mutation {
         getLatLong(address: String!): LatLong
       }
+=======
+    type Auth {
+        token: ID!
+        user: User
+      }
+
+    type Mutation {
+        addUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
+        }
+>>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474
 `;
 
 module.exports = typeDefs;
