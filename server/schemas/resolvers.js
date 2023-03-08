@@ -1,4 +1,3 @@
-const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const axios = require('axios');
 const { signToken } = require('../utils/auth');
@@ -30,7 +29,6 @@ const resolvers = {
             };
 
             const yelpResponse = await axios(yelpUrl, yelpConfig);
-
             const businesses = yelpResponse.data.businesses.map(business => ({
                 name: business.name,
                 address: business.location.address1,

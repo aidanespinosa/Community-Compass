@@ -19,7 +19,7 @@ function LoginModal(props) {
 
   return (
     <div className="login-modal">
-      <div className="modal-content">
+      <div style={{ backgroundColor: "rgb(12, 123, 198)" }} className="modal-content">
         <form onSubmit={handleSubmit}>
           <h2>Login</h2>
           <label>

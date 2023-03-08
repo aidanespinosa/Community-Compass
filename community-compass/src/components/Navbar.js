@@ -5,7 +5,7 @@ function Navbar(props) {
     return (
         <nav className="links">
             <h1 style={{ fontSize: 30, marginBottom: 10, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
-                <ul className="directory">
+                <ul className="directory" style={{ marginTop: 10, display: "relative", flexDirection: "column", alignItems: "center" }}>
                     <li className="links">
                         <a href="#" onClick={props.toggleLanding} style={{ borderBottom: "1px solid #f2f2f2" }}>Home</a>
                     </li>

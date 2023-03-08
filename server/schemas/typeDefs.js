@@ -32,6 +32,20 @@ const typeDefs = gql`
         user: User
       }
 
+      type LatLong {
+        lat: Float
+        lng: Float
+        businesses: [Business]
+      }
+      
+      type Business {
+        name: String!
+        address: String
+        city: String
+        zipcode: String
+        image: String
+      }
+
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
