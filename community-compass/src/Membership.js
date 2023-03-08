@@ -16,6 +16,8 @@ function AccountCreationPage() {
     return (
 
         <div className="membership" style={{ marginLeft: 360, marginRight: 25 }}>
+        {Auth.loggedIn() ? (
+          <>
             <h1 style={{ color: "gray", fontSize: 45, marginBottom: 15, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
                 Membership Options:
             </h1>
@@ -38,7 +40,6 @@ function AccountCreationPage() {
                     <ul>- (optional) Access to the Megan's Law website for the provided address.</ul>
                 </div>
             </form>
-
             <section>
           <form action="/create-checkout-session" method="POST">
             {/* Add a hidden field with the lookup_key of your Price */}
@@ -54,12 +55,35 @@ function AccountCreationPage() {
           name="session_id"
           value=''
         />
-        <button id="checkout-and-portal-button" type="submit">
+        <button className="cool-button" id="checkout-and-portal-button" type="submit">
           Manage your billing information
         </button>
       </form>
         </section>
-        </div>
+          </>
+        ):(
+          <>
+                <div>
+                    <label htmlFor="basic">Basic Account (Free)</label>
+                    <ul>Basic accounts include:</ul>
+                    <ul>- Local neighborhood Crime Grade Rating for the provided address.</ul>
+                    <ul>- Local School District and ratings of listed schools.</ul>
+                </div>
+                <div>
+                    <label htmlFor="premium">Premium Account ($10/month)</label>
+                    <ul>Premium accounts include:</ul>
+                    <ul>- All benefits from basic memberships.</ul>
+                    <ul>- Ratings of local public amenities such as parks and trails.</ul>
+                    <ul>- Ratings of local recreational areas such as campsites, pools, museums, etc.</ul>
+                    <ul>- (optional) Access to the Megan's Law website for the provided address.</ul>
+                </div>
+          </>
+        )}
+      </div>
+
+
+
+
     );
 }
 
