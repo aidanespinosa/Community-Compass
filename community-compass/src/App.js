@@ -10,6 +10,7 @@ import Signup from './pages/Signup.js';
 import ParticlesBg from './pages/Particles';
 import Auth from '../src/utils/auth';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter } from 'react-router-dom';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -95,6 +96,7 @@ function App() {
 
     <>
       <ApolloProvider client={client}>
+        <BrowserRouter>
         <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute", opacity: 0.8 }}>
         </div>
         <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
@@ -136,6 +138,7 @@ function App() {
         <div className={`membership ${membershipVisible ? "" : "hidden"}`}>
           <Membership />
         </div>
+        </BrowserRouter>
       </ApolloProvider>
     </>
   );

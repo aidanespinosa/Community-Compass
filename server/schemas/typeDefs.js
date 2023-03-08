@@ -37,12 +37,13 @@ const typeDefs = gql`
         lng: Float
         businesses: [Business]
       }
+      
       type Business {
-        name: [String]
-        address: [String]
-        city: [String]
-        zipcode: [String]
-        image: [String]
+        name: String!
+        address: String
+        city: String
+        zipcode: String
+        image: String
       }
 
     type Mutation {
