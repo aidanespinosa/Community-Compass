@@ -17,8 +17,15 @@ const typeDefs = gql`
     type LatLong {
         lat: Float
         lng: Float
-        businesses: [String]
+        businesses: [Business]
       }
+    type Business {
+        name: String
+        address: String
+        city: String
+        zipcode: String
+        image: String
+    }
       
     type Mutation {
         getLatLong(address: String!): LatLong
