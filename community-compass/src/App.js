@@ -46,6 +46,11 @@ function App() {
   const [landingVisible, setLandingVisible] = useState(true);
   const [contactUsVisible, setContactUsVisible] = useState(false);
   const [membershipVisible, setMembershipVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const logout = () => {
+    setIsLoggedIn(false);
+  }
 
   function toggleLanding() {
     setLandingVisible(true);
@@ -109,11 +114,12 @@ function App() {
         <div className="buttons" style={{ position: "fixed", top: 0, right: 0 }}>
           <button style={{ backgroundColor: "rgb(12, 123, 198)", fontWeight: 500 }} className="cool-button" onClick={handleSignUpClick}>Signup</button>
           <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={handleLoginClick}>Login</button>
-          <button style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={logout}>
-            Logout
-          </button>
-          {showLogin && <Login /*onClose={closeLogin}*/ />}
-          {showSignup && <Signup /*onClose={closeSignup}*/ />}
+          {isLoggedIn ? (
+            <button
+              style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={logout}>Logout</button>
+          ) : null}
+          {showLogin}
+          {showSignup}
         </div>
         <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
           {Auth.loggedIn() ? (
