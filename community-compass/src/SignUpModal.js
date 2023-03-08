@@ -1,62 +1,100 @@
 import React, { useState } from "react";
 
-function SignUpModal(props) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [isPremium, setIsPremium] = useState(false);
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../src/utils/mutations';
 
-    function handleUsernameChange(event) {
-        setUsername(event.target.value);
-    }
+import Auth from '../src/utils/auth';
 
-    function handlePasswordChange(event) {
-        setPassword(event.target.value);
-    }
+const SignUpModal = (props) => {
+    const [formState, setFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+      });
+      const [addUser] = useMutation(ADD_USER);
 
-    function handleEmailChange(event) {
-        setEmail(event.target.value);
-    }
 
-    function handleIsPremiumChange(event) {
-        setIsPremium(event.target.checked);
-    }
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
-    function handleSubmit(event) {
+        setFormState({
+          ...formState,
+          [name]: value,
+        });
+      };
+
+      const handleSubmit = async (event) => {
         event.preventDefault();
-        // Here we add our signup logic and then store the user data in the state or local storage
-    }
+        console.log(formState);
+    
+        try {
+          const { data } = await addUser({
+            variables: { ...formState },
+          });
+    
+          Auth.login(data.addUser.token);
+        } catch (e) {
+          console.error(e);
+        }
+      }; 
+    
 
     return (
-        <div className="signUp-modal">
-            <div className="modal-content">
-                <form onSubmit={handleSubmit}>
-                    <h2>Sign Up</h2>
-                    <label>
-                        Username:
-                        <input type="text" value={username} onChange={handleUsernameChange} />
-                    </label>
-                    <br />
-                    <label>
-                        Email:
-                        <input type="email" value={email} onChange={handleEmailChange} />
-                    </label>
-                    <br />
-                    <label>
-                        Password:
-                        <input type="password" value={password} onChange={handlePasswordChange} />
-                    </label>
-                    <br />
-                    <label>
-                        <input type="checkbox" checked={isPremium} onChange={handleIsPremiumChange} />
-                        <span> </span>Check to sign up for premium account for <br></br>$10/month.
-                    </label>
-                    <br />
-                    <button type="submit">Sign Up</button>
-                    <button type="button" onClick={props.onClose}>Close</button>
-                </form>
-            </div>
+      <div className="signUp-modal">
+        <div className="modal-content">
+          <form onSubmit={handleSubmit}>
+            <h2>Sign Up</h2>
+            <label>
+              Username:
+              <input
+                className="form-input"
+                placeholder="Your username"
+                name="username"
+                type="text"
+                value={formState.name}
+                onChange={handleChange}
+              />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+            </label>
+            <br />
+            <label>
+              Password:
+              <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+            </label>
+            <br />
+            <label>
+              <input
+                type="checkbox"
+                checked={formState.isPremium}
+                onChange={handleChange}
+              />
+              <span> </span>Check to sign up for premium account for <br></br>
+              $10/month.
+            </label>
+            <br />
+            <button type="submit">Sign Up</button>
+          <button type="button" onClick={props.onClose}>Close</button>
+          </form>
         </div>
+      </div>
     );
 }
 

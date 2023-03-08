@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import SearchBar from "./searchBar";
+import Auth from '../utils/auth';
 
 function LandingPage() {
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState("");
   const [searched, setSearched] = useState(false);
@@ -41,8 +48,26 @@ function LandingPage() {
           </div>
         )}
         {error && <div className="error">{error}</div>}
+
+
+        <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
+{Auth.loggedIn() ? (
+  <>
+
+    <button className="cool-button" onClick={logout}>
+      Logout
+    </button>
+  </>
+) : (
+  <>
+
+  </>
+)}
+</div>
       </main>
     </div>
+
+
   );
 }
 
