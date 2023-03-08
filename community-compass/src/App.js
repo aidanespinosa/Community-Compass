@@ -4,10 +4,19 @@ import Navbar from './Navbar';
 import Landing from './Landing.js';
 import Membership from './Membership';
 import ContactUs from './ContactUs';
-import LoginModal from './LoginModal';
-import SignUpModal from './SignUpModal';
+import LoginModal from "./LoginModal";
+import SignUpModal from "./SignUpModal";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import ParticlesBg from './Particles';
 import Login from './pages/Login.js';
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
+
+
 
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
@@ -54,7 +63,7 @@ function App() {
   }
 
   return (
-    <>
+    <ApolloProvider client = {client}>
       <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute", opacity: 0.8 }}>
       </div>
       <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
@@ -79,7 +88,7 @@ function App() {
       <div className={`membership ${membershipVisible ? "" : "hidden"}`}>
         <Membership />
       </div>
-    </>
+    </ApolloProvider>
   );
 }
 

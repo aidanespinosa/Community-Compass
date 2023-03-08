@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchBar from "./searchBar";
 
 function LandingPage() {
   const [search, setSearch] = useState("");
@@ -22,23 +23,13 @@ function LandingPage() {
     }
   };
 
-  const handleInputChange = (event) => {
-    setSearch(event.target.value);
-  };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
-  };
 
   return (
     <div className="container" >
 
       <main className="main">
         <div className="search">
-          <input type="text" value={search} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Search for an address" />
-          <button className="cool-button" onClick={handleSearch}>Search</button>
+          <SearchBar onSearch={handleSearch} />
         </div>
         <div className="search-result" style={{ justifyContent: 'center', alignItems: 'center' }}>
         </div>
