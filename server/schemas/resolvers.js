@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const axios = require ('axios');
 
 const resolvers = {
     Query: {
@@ -10,19 +11,24 @@ const resolvers = {
 
         //     // return data
         // }
-        getLatLong: async (parent, args, { dataSources }) => {
+       
+    },
+    Mutation: {
+        getLatLong: async (parent, args, ) => {
             const { address } = args;
             const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
             const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
       
-            const response = await dataSources.googleMapsAPI.get(url);
-            const location = response.results[0].geometry.location;
+            const response = await axios(url);
+            console.log("response data", response.data);
+            const location = response.data.results[0].geometry.location;
             return {
               lat: location.lat,
               lng: location.lng
+              //next api
             };
           }
-    },
+    }
     
 };
 
