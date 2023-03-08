@@ -73,7 +73,7 @@ function App() {
     setShowSignup(false);
   }
 
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
   const [showSignup, setShowSignup] = useState(false);
 
   function handleLoginClick() {
@@ -115,9 +115,9 @@ function App() {
           {isLoggedIn ? (
             <button
               style={{ color: "rgb(12, 123, 198)", backgroundColor: "white", fontWeight: 700 }} className="cool-button" onClick={logout}>Logout</button>
-          ) : null}
-          {showLogin}
-          {showSignup}
+          ) : null }
+          {!showLogin}
+          {!showSignup}
         </div>
         <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
           {Auth.loggedIn() ? (

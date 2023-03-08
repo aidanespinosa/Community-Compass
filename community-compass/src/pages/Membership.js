@@ -25,15 +25,15 @@ function AccountCreationPage() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <input type="radio" id="basic" name="plan" value="basic" checked={selectedPlan === "basic"} onChange={handlePlanSelection} />
-                    <label htmlFor="basic">Basic Account (Free)</label>
-                    <ul>Basic accounts include:</ul>
+                    <label htmlFor="basic"> Basic Account (Free)</label>
+                    <ul> Basic accounts include:</ul>
                     <ul>- Local neighborhood Crime Grade Rating for the provided address.</ul>
                     <ul>- Local School District and ratings of listed schools.</ul>
                 </div>
                 <div>
                     <input type="radio" id="premium" name="plan" value="premium" checked={selectedPlan === "premium"} onChange={handlePlanSelection} />
-                    <label htmlFor="premium">Premium Account ($10/month)</label>
-                    <ul>Premium accounts include:</ul>
+                    <label htmlFor="premium"> Premium Account ($10/month)</label>
+                    <ul> Premium accounts include:</ul>
                     <ul>- All benefits from basic memberships.</ul>
                     <ul>- Ratings of local public amenities such as parks and trails.</ul>
                     <ul>- Ratings of local recreational areas such as campsites, pools, museums, etc.</ul>
@@ -64,13 +64,13 @@ function AccountCreationPage() {
         ):(
           <>
                 <div>
-                    <label htmlFor="basic">Basic Account (Free):</label>
+                    <label htmlFor="basic"> Basic Account (Free):</label>
                     <ul>Basic accounts include:</ul>
                     <ul>- Local neighborhood Crime Grade Rating for the provided address.</ul>
                     <ul>- Local School District and ratings of listed schools.</ul>
                 </div>
                 <div>
-                    <label htmlFor="premium">Upgrade to a Premium Account ($10/month):</label>
+                    <label htmlFor="premium"> Upgrade to a Premium Account ($10/month):</label>
                     <ul>Premium accounts include:</ul>
                     <ul>- All benefits from basic memberships.</ul>
                     <ul>- Ratings of local public amenities such as parks and trails.</ul>
