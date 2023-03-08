@@ -4,15 +4,11 @@ const express = require("express");
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
-const MoviesAPI = require('./datasources/movieAPI');
-const { typeDefs, resolvers } = require('./schemas');
 
 const { typeDefs, resolvers } = require('./schemas');
 require('dotenv').config();
-const db = require("./config/connection");
 
 const mainRouter = require("./controllers");
-require('dotenv').config();
 const db = require("./config/connection");
 
 const app = new express();
@@ -21,11 +17,6 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources: () => {
-    return {
-      moviesAPI: new MoviesAPI(),
-    };
-  },
 });
 
 app.use(express.json());

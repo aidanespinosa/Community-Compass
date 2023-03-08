@@ -18,11 +18,18 @@ const typeDefs = gql`
         token: ID!
         user: User
       }
-      
+
       type LatLong {
         lat: Float
         lng: Float
-        businesses: [String]
+        businesses: [Business]
+      }
+      type Business {
+        name: [String]
+        address: [String]
+        city: [String]
+        zipcode: [String]
+        image: [String]
       }
 
     type Mutation {
