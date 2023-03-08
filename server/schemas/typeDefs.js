@@ -18,10 +18,17 @@ const typeDefs = gql`
         token: ID!
         user: User
       }
+      
+      type LatLong {
+        lat: Float
+        lng: Float
+        businesses: [String]
+      }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
+        getLatLong(address: String!): LatLong
         }
 `;
 

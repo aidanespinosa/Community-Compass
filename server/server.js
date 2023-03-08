@@ -12,6 +12,7 @@ require('dotenv').config();
 const db = require("./config/connection");
 
 const mainRouter = require("./controllers");
+require('dotenv').config();
 const db = require("./config/connection");
 
 const app = new express();
