@@ -16,6 +16,11 @@ const logout = (event) => {
   Auth.logout();
 };
 
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -27,11 +32,6 @@ const authLink = setContext((_, { headers }) => {
       authorization: token ? `Bearer ${token}` : '',
     },
   };
-});
-
-// Construct our main GraphQL API endpoint
-const httpLink = createHttpLink({
-  uri: '/graphql',
 });
 
 const client = new ApolloClient({
@@ -91,6 +91,7 @@ function App() {
   }
 
   return (
+
     <>
       <ApolloProvider client={client}>
         <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute", opacity: 0.8 }}>
