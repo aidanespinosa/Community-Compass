@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "./searchBar";
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
 
@@ -49,21 +50,6 @@ function LandingPage() {
         )}
         {error && <div className="error">{error}</div>}
 
-
-        <div className="buttons" style={{ position: "absolute", top: 30, right: 10 }}>
-{Auth.loggedIn() ? (
-  <>
-
-    <button className="cool-button" onClick={logout}>
-      Logout
-    </button>
-  </>
-) : (
-  <>
-
-  </>
-)}
-</div>
       </main>
     </div>
 

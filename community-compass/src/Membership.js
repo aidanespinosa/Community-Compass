@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 function AccountCreationPage() {
     const [selectedPlan, setSelectedPlan] = useState("basic");
 
@@ -13,6 +14,7 @@ function AccountCreationPage() {
     }
 
     return (
+
         <div className="membership" style={{ marginLeft: 360, marginRight: 25 }}>
             <h1 style={{ color: "gray", fontSize: 45, marginBottom: 15, textShadow: "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000" }}>
                 Membership Options:
@@ -35,8 +37,17 @@ function AccountCreationPage() {
                     <ul>- Ratings of local recreational areas such as campsites, pools, museums, etc.</ul>
                     <ul>- (optional) Access to the Megan's Law website for the provided address.</ul>
                 </div>
-                <button className="cool-button" type="submit">Create Account</button>
             </form>
+
+            <section>
+          <form action="/create-checkout-session" method="POST">
+            {/* Add a hidden field with the lookup_key of your Price */}
+            <input type="hidden" name="price_id" value="price_1MiVhgGGno84ND8Lt0DEwfqQ" />
+            <button className="cool-button" id="checkout-and-portal-button" type="submit">
+            Upgrade To Premium
+            </button>
+          </form>
+        </section>
         </div>
     );
 }
