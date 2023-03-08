@@ -4,11 +4,11 @@ import Navbar from './Navbar';
 import Landing from './Landing.js';
 import Membership from './Membership';
 import ContactUs from './ContactUs';
-<<<<<<< HEAD:src/App.js
 import LoginModal from "./LoginModal";
 import SignUpModal from "./SignUpModal";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
+import ParticlesBg from './Particles';
+import Login from './pages/Login.js';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -16,12 +16,7 @@ const client = new ApolloClient({
 });
 
 
-=======
-import LoginModal from './LoginModal';
-import SignUpModal from './SignUpModal';
-import ParticlesBg from './Particles';
-import Login from './pages/Login.js';
->>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474:community-compass/src/App.js
+
 
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
@@ -68,18 +63,7 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD:src/App.js
-  <ApolloProvider client={client}>
-    <div className="header">
-      <div>
-        <div className="buttons" style={{ position: "absolute", top: 0, right: 0 }}>
-          <button className="cool-button" style={{ right: "75px" }} onClick={handleLoginClick}>Login</button>
-          {showLoginModal && <LoginModal onClose={closeLoginModal} />}
-          <button className="cool-button" onClick={handleSignUpClick}>Signup</button>
-          {showSignUpModal && <SignUpModal onClose={closeSignUpModal} />}
-        </div>
-=======
-    <>
+    <ApolloProvider client = {client}>
       <div className="header" style={{ zIndex: 0, height: "100%", width: "350px", position: "absolute", opacity: 0.8 }}>
       </div>
       <h1 style={{ color: "black", marginBottom: 20, fontSize: 45, position: 'absolute', top: 25, left: 10 }}>
@@ -88,7 +72,6 @@ function App() {
       <div>
       <ParticlesBg color="#ff0000" num={200} type="random" bg={true} />
         <Navbar toggleLanding={toggleLanding} toggleContactUs={toggleContactUs} toggleMembership={toggleMembership} />
->>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474:community-compass/src/App.js
       </div>
       <div className={`Landing ${landingVisible ? "" : "hidden"}`}>
         <Landing />
@@ -105,12 +88,7 @@ function App() {
       <div className={`membership ${membershipVisible ? "" : "hidden"}`}>
         <Membership />
       </div>
-<<<<<<< HEAD:src/App.js
-    </div>
-  </ApolloProvider>
-=======
-    </>
->>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474:community-compass/src/App.js
+    </ApolloProvider>
   );
 }
 
