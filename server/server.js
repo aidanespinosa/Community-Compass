@@ -47,9 +47,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
   })
   };
 
-<<<<<<< HEAD
-  startApolloServer(typeDefs, resolvers,);
-=======
 //Stripe
 
 app.get("/checkout-session", async (req, res) => {
@@ -105,4 +102,3 @@ app.post("/create-checkout-session", async (req, res) => {
   startApolloServer(typeDefs, resolvers);
 
   
->>>>>>> 7576bc65d65feb76ebd3261d0d6475ae3a629474
