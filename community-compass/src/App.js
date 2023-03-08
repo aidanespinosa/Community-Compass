@@ -11,11 +11,6 @@ import ParticlesBg from './pages/Particles';
 import Auth from '../src/utils/auth';
 import { setContext } from '@apollo/client/link/context';
 
-const logout = (event) => {
-  event.preventDefault();
-  Auth.logout();
-};
-
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,16 +36,17 @@ const client = new ApolloClient({
   uri: '/graphql',
 });
 
-
 function App() {
   const [landingVisible, setLandingVisible] = useState(true);
   const [contactUsVisible, setContactUsVisible] = useState(false);
   const [membershipVisible, setMembershipVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const logout = () => {
+  const logout = (event) => {
+    event.preventDefault();
     setIsLoggedIn(false);
-  }
+    Auth.logout();
+  };
 
   function toggleLanding() {
     setLandingVisible(true);
@@ -125,11 +121,7 @@ function App() {
           {Auth.loggedIn() ? (
             <>
               <p>{Auth.getProfile().data.username} is currently logged In</p>
-            </>
-          ) : (
-            <>
-              <p>You are not logged In</p>
-            </>
+            </> ) : (<><p>You are not logged In</p></>
           )}
         </div>
         <div className={`Login ${showLogin ? "" : "hidden"}`}>
