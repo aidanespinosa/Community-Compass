@@ -9,7 +9,7 @@ const resolvers = {
             return User.find();
         },
     //    apiSearch: async () => {
-            // fetch rewuest
+            // fetch request
 
             // return data
     //    }

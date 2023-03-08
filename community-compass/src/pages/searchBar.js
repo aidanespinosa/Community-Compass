@@ -24,9 +24,15 @@ const SearchBar = ({ onSearch }) => {
         onSearch(data.getLatLong);
     };
 
+      const handleInputKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
     return (
         <div>
-            <input type="text" value={address} onChange={handleInputChange} />
+            <input type="text" value={address} onChange={handleInputChange} onKeyDown={handleInputKeyDown} placeholder="Search for an address" />
             <button className="cool-button" onClick={handleSearchClick}>Search</button>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error.message}</p>}
