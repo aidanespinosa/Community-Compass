@@ -4,6 +4,7 @@ import Auth from '../utils/auth';
 function AccountCreationPage() {
   const [selectedPlan, setSelectedPlan] = useState("basic");
 
+
   function handlePlanSelection(event) {
     setSelectedPlan(event.target.value);
   }
@@ -11,6 +12,13 @@ function AccountCreationPage() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(selectedPlan);
+    
+  }
+
+  function handleSubscription(event) {
+    event.preventDefault();
+    window.location.replace('https://billing.stripe.com/p/login/test_5kA14J6Ml90o32U4gg')
+    
   }
 
   return (
@@ -48,17 +56,15 @@ function AccountCreationPage() {
                 Upgrade To Premium
               </button>
             </form>
-            <form action="/create-portal-session" method="POST">
-              <input
-                type="hidden"
-                id="session-id"
-                name="session_id"
-                value=''
-              />
+
+            <form onSubmit={handleSubscription}>
+              {/* Add a hidden field with the lookup_key of your Price */}
+              <input type="hidden" name="price_id" value="price_1MiVhgGGno84ND8Lt0DEwfqQ" />
               <button className="cool-button" id="checkout-and-portal-button" type="submit">
-                Manage your billing information
+                Manage Premium
               </button>
             </form>
+
           </section>
         </>
       ) : (
