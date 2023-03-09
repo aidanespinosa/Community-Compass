@@ -49,29 +49,34 @@ app.get("/checkout-session", async (req, res) => {
   res.send(session);
 });
 
-// try {
-//   const session = await stripe.checkout.sessions.create({
-//     mode: "subscription",
-//     line_items: [
-//       {
-//         price: price_id,
-//         quantity: 1,
-//       },
-//     ],
-//     // On Success the user will return here
-//     success_url: `http://localhost:3000`,
-//     cancel_url: `http://localhost:3000/membership`,
-//     // automatic_tax: { enabled: true }
-//   });
-//   return res.redirect(303, session.url);
-// } catch (e) {
-//   res.status(400);
-//   return res.send({
-//     error: {
-//       message: e.message,
-//     },
-//   });
-// }
+app.post('/create-checkout-session', async (req, res) => {
+  
+  try {
+    const session = await stripe.checkout.sessions.create({
+    mode: "subscription",
+    line_items: [
+        {
+        price: price_id,
+        quantity: 1,
+        },
+    ],
+    // On Success the user will return here
+    success_url: `http://localhost:3000`,
+    cancel_url: `http://localhost:3000/membership`,
+    // automatic_tax: { enabled: true }
+    });
+
+    return res.redirect(303, session.url);
+} catch (e) {
+    res.status(400);
+    return res.send({
+    error: {
+        message: e.message,
+    },
+    });
+  }
+});
+  
 
 app.post('/create-portal-session', async (req, res) => {
   // For demonstration purposes, we're using the Checkout session to retrieve the customer ID.
