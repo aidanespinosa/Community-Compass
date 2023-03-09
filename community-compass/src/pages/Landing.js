@@ -56,16 +56,16 @@ function LandingPage() {
         )}
         {Auth.loggedIn() ? (
           <>
-              <button className="cool-button" onClick={logout}>
+              <button className="cool-button" style={{ display: "none" }} onClick={logout}>
                 Logout
               </button>
-              <Link className="cool-button" to="/membership">
+              <Link className="cool-button" style={{ display: "none", position :"fixed", bottom: 0, left: 0 }} to="/membership">
                 Upgrage Membership
               </Link>
           </>
         ) : (
           <>
-                <button className="cool-button" onClick={logout}>
+                <button className="cool-button" style={{ display: "none" }} onClick={logout}>
                 Notworking
               </button>
           </>
