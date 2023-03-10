@@ -66,39 +66,43 @@ const startApolloServer = async (typeDefs, resolvers) => {
 };
 
 //Stripe
-// const stripe = require('stripe')('sk_test_51Mgh8NGGno84ND8L78IKd03OnvFmjQyoMCj4p3v0MPWOyKMy99wM9CU4HMzZYhGCrISbTVxSGuc7Zb9hnArIl9cc00ct3Tb9VX');
-// const YOUR_DOMAIN = 'https://safezone.herokuapp.com/';
-// const price_id = 'price_1MiVhgGGno84ND8Lt0DEwfqQ';
+const stripe = require('stripe')('sk_test_51Mgh8NGGno84ND8L78IKd03OnvFmjQyoMCj4p3v0MPWOyKMy99wM9CU4HMzZYhGCrISbTVxSGuc7Zb9hnArIl9cc00ct3Tb9VX');
+const YOUR_DOMAIN = 'https://safezone.herokuapp.com/';
+const price_id = 'price_1MiVhgGGno84ND8Lt0DEwfqQ'
 
-// app.get("/checkout-session", async (req, res) => {
-//   const { sessionId } = req.query;
-//   const session = await stripe.checkout.sessions.retrieve(sessionId);
-//   res.send(session);
-// });
+app.get("/checkout-session", async (req, res) => {
+  const { sessionId } = req.query;
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+  res.send(session);
+});
 
-// try {
-//   const session = await stripe.checkout.sessions.create({
-//     mode: "subscription",
-//     line_items: [
-//       {
-//         price: price_id,
-//         quantity: 1,
-//       },
-//     ],
-//     // On Success the user will return here
-//     success_url: `http://localhost:3000`,
-//     cancel_url: `http://localhost:3000/membership`,
-//     // automatic_tax: { enabled: true }
-//   });
-//   return res.redirect(303, session.url);
-// } catch (e) {
-//   res.status(400);
-//   return res.send({
-//     error: {
-//       message: e.message,
-//     },
-//   });
-// }
+app.post('/create-checkout-session', async (req, res) => {
+  
+  try {
+    const session = await stripe.checkout.sessions.create({
+    mode: "subscription",
+    line_items: [
+        {
+        price: price_id,
+        quantity: 1,
+        },
+    ],
+    // On Success the user will return here
+    success_url: `https://safezone.herokuapp.com/`,
+    cancel_url: `https://safezone.herokuapp.com/`,
+    // automatic_tax: { enabled: true }
+    });
+
+    return res.redirect(303, session.url);
+} catch (e) {
+    res.status(400);
+    return res.send({
+    error: {
+        message: e.message,
+    },
+    });
+  }
+});
 
 app.post('/create-portal-session', async (req, res) => {
   // For demonstration purposes, we're using the Checkout session to retrieve the customer ID.
